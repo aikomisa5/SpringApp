@@ -15,13 +15,13 @@ import java.util.List;
  * Created by mbritos on 12/03/2019.
  */
 @Service
-public class PersonaServiceImpl implements PersonaServiceInterface {
+public class PersonaServiceRepositoryImpl implements PersonaServiceInterface {
 
     private final PersonaRepository personaRepository;
     private final PersonaDAL personaDAL;
 
     @Autowired
-    public PersonaServiceImpl(PersonaRepository personRepository, PersonaDAL personaDAL) {
+    public PersonaServiceRepositoryImpl(PersonaRepository personRepository, PersonaDAL personaDAL) {
         this.personaRepository = personRepository;
         this.personaDAL = personaDAL;
     }

@@ -1,13 +1,11 @@
 package com.springApp.dto;
 
 import com.springApp.interfaces.CRUD;
-import org.springframework.stereotype.Indexed;
 
 import javax.persistence.*;
 
 
 @Entity
-@Indexed
 @Table(name = "personas")
 public class Persona implements CRUD {
 	
