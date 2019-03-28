@@ -18,12 +18,10 @@ import java.util.List;
 public class PersonaServiceRepositoryImpl implements PersonaServiceInterface {
 
     private final PersonaRepository personaRepository;
-    private final PersonaDAL personaDAL;
 
     @Autowired
-    public PersonaServiceRepositoryImpl(PersonaRepository personRepository, PersonaDAL personaDAL) {
+    public PersonaServiceRepositoryImpl(PersonaRepository personRepository) {
         this.personaRepository = personRepository;
-        this.personaDAL = personaDAL;
     }
 
     @Override
@@ -66,15 +64,4 @@ public class PersonaServiceRepositoryImpl implements PersonaServiceInterface {
         return personaRepository.count();
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<Persona> fuzzySearchPerson(String term) {
-        return personaDAL.fuzzySearchPerson(term);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Persona> wildCardSearchPerson(String term) {
-        return personaDAL.wildCardSearchPerson(term);
-    }
 }

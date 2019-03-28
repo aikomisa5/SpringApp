@@ -21,20 +21,27 @@ public class Persona implements CRUD {
 	private int edad;
 	@Column(name = "mail")
 	private String mail;
-	@Column(name = "documento")
-	private String documento;
+	//@Column(name = "documento")
+	//private String documento;
 	@Column(name = "activo")
 	private boolean activo;
+	@OneToOne(fetch = FetchType.EAGER)
+	private Documento documento;
+	@OneToOne(fetch = FetchType.EAGER)
+	private Domicilio domicilio;
 	
 	public Persona() {
 		this.activo = true;
+		this.domicilio = new Domicilio();
+		this.documento = new Documento();
 	}
-	public Persona(String nombre, String apellido, int edad, String mail, String documento) {
+	public Persona(String nombre, String apellido, int edad, String mail, Documento documento, Domicilio domicilio) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
 		this.mail = mail;
 		this.documento = documento;
+		this.domicilio = domicilio;
 		this.activo = true;
 	}
 	
@@ -68,14 +75,17 @@ public class Persona implements CRUD {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public String getDocumento() {
+	public Documento getDocumento() {
 		return documento;
 	}
-	public void setDocumento(String documento) {
+	public void setDocumento(Documento documento) {
 		this.documento = documento;
 	}
-	public void setActivo(Boolean activo) {
-		this.activo = activo;
+	public Domicilio getDomicilio() {
+		return domicilio;
+	}
+	public void setDomicilio(Domicilio domicilio) {
+		this.domicilio = domicilio;
 	}
 	public boolean getActivo() {
 		return activo;

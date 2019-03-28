@@ -16,6 +16,4 @@ public interface PersonaServiceInterface {
     List<Persona> getAllPersons(int pageNumber, int pageSize);
     List<Persona> getAllPersons();
     long countPersons();
-    List<Persona> fuzzySearchPerson(String term);
-    List<Persona> wildCardSearchPerson(String term);
 }
