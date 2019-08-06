@@ -1,65 +1,51 @@
-package com.springApp.services;
+package com.britos.spring.services;
 
-import com.springApp.dal.PersonaDAL;
-import com.springApp.dto.Persona;
-import com.springApp.interfaces.PersonaServiceInterface;
-import com.springApp.repository.PersonaRepository;
+import com.britos.spring.model.Persona;
+import com.britos.spring.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by mbritos on 12/03/2019.
- */
 @Service
-public class PersonaServiceRepositoryImpl implements PersonaServiceInterface {
+public class PersonaService {
 
     private final PersonaRepository personaRepository;
 
     @Autowired
-    public PersonaServiceRepositoryImpl(PersonaRepository personRepository) {
+    public PersonaService(PersonaRepository personRepository) {
         this.personaRepository = personRepository;
     }
 
-    @Override
     public Persona createPerson(Persona person) {
         return personaRepository.save(person);
     }
 
-    @Override
     public Persona getPerson(Long id) {
         return personaRepository.findOne(id);
     }
 
-    @Override
     public Persona editPerson(Persona person) {
         return personaRepository.save(person);
     }
 
-    @Override
     public void deletePerson(Persona person) {
         personaRepository.delete(person);
     }
 
-    @Override
     public void deletePerson(Long id) {
         personaRepository.delete(id);
     }
 
-    @Override
     public List<Persona> getAllPersons(int pageNumber, int pageSize) {
         return personaRepository.findAll(new PageRequest(pageNumber, pageSize)).getContent();
     }
 
-    @Override
     public List<Persona> getAllPersons() {
         return personaRepository.findAll();
     }
 
-    @Override
     public long countPersons() {
         return personaRepository.count();
     }

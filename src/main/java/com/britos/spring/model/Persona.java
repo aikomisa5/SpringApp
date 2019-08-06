@@ -1,37 +1,32 @@
-package com.springApp.dto;
-
-import com.springApp.interfaces.CRUD;
+package com.britos.spring.model;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table(name = "personas")
-public class Persona implements CRUD {
+@Table(name = "PERSONA")
+public class Persona{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "idPersona", nullable = false, unique = true)
+	@Column(nullable = false, unique = true)
 	private Long id;
-	@Column(name = "nombre", length = 50)
+	@Column
+	private int activo;
+	@Column(length = 100)
 	private String nombre;
-	@Column(name = "apellido", length = 50)
+	@Column(length = 100)
 	private String apellido;
-	@Column(name = "edad")
+	@Column
 	private int edad;
-	@Column(name = "mail")
+	@Column
 	private String mail;
-	//@Column(name = "documento")
-	//private String documento;
-	@Column(name = "activo")
-	private boolean activo;
 	@OneToOne(fetch = FetchType.EAGER)
 	private Documento documento;
 	@OneToOne(fetch = FetchType.EAGER)
 	private Domicilio domicilio;
 	
 	public Persona() {
-		this.activo = true;
+		this.activo = 1;
 		this.domicilio = new Domicilio();
 		this.documento = new Documento();
 	}
@@ -42,7 +37,7 @@ public class Persona implements CRUD {
 		this.mail = mail;
 		this.documento = documento;
 		this.domicilio = domicilio;
-		this.activo = true;
+		this.activo = 1;
 	}
 	
 	public Long getId() {
@@ -87,10 +82,10 @@ public class Persona implements CRUD {
 	public void setDomicilio(Domicilio domicilio) {
 		this.domicilio = domicilio;
 	}
-	public boolean getActivo() {
+	public int getActivo() {
 		return activo;
 	}
-	public void setActivo(boolean activo) {
+	public void setActivo(int activo) {
 		this.activo = activo;
 	}
 	@Override

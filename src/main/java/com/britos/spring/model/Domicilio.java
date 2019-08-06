@@ -1,42 +1,36 @@
-package com.springApp.dto;
+package com.britos.spring.model;
 
 import javax.persistence.*;
 
-/**
- * Created by mbritos on 26/03/2019.
- */
-
 @Entity
-public class Domicilio {
+@Table(name = "DOMICILIO")
+public class Domicilio{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idDomicilio", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private Long id;
     @Column
-    String nombreCalle;
+    private String nombreCalle;
     @Column
-    int numeroCalle;
+    private String numeroCalle;
     @Column
-    String piso;
+    private String piso;
     @Column
-    String pais;
+    private String pais;
     @Column
-    String provincia;
+    private String provincia;
     @Column
-    String codigoPostal;
+    private String codigoPostal;
     @Column
-    String localidad;
+    private String localidad;
     @Column
-    String partido;
+    private String partido;
 
-    public Domicilio(){
+    public Domicilio(){}
 
-    }
-
-    public Domicilio(String nombreCalle, int numeroCalle, String piso, String pais, String provincia, String codigoPostal, String localidad, String partido) {
+    public Domicilio(String nombreCalle, String numeroCalle, String piso, String pais, String provincia, String codigoPostal, String localidad, String partido) {
         this.nombreCalle = nombreCalle;
-        this.numeroCalle = numeroCalle;
         this.piso = piso;
         this.pais = pais;
         this.provincia = provincia;
@@ -61,11 +55,11 @@ public class Domicilio {
         this.nombreCalle = nombreCalle;
     }
 
-    public int getNumeroCalle() {
+    public String getNumeroCalle() {
         return numeroCalle;
     }
 
-    public void setNumeroCalle(int numeroCalle) {
+    public void setNumeroCalle(String numeroCalle) {
         this.numeroCalle = numeroCalle;
     }
 

@@ -1,29 +1,25 @@
-package com.springApp.dto;
+package com.britos.spring.model;
 
 import javax.persistence.*;
 
-/**
- * Created by mbritos on 26/03/2019.
- */
-
 @Entity
+@Table(name = "DOCUMENTO")
 public class Documento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idDocumento", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private Long id;
     @Column
-    String tipoDocumento;
+    private String tipo;
     @Column
-    int numero;
+    private int numero;
 
-    public Documento(){
+    public Documento(){}
 
-    }
-
-    public Documento(String tipoDocumento, int numero){
-
+    public Documento(String tipo, int numero) {
+        this.tipo = tipo;
+        this.numero = numero;
     }
 
     public Long getId() {
@@ -34,12 +30,12 @@ public class Documento {
         this.id = id;
     }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public int getNumero() {
