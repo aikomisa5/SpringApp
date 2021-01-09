@@ -1,7 +1,8 @@
-package com.britos.spring.repository;
+package com.spring.project.repository;
 
-import com.britos.spring.model.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.spring.project.model.Persona;
 
 public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
